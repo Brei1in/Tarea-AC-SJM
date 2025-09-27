@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colmado El Buen Vecino</title>
+    <style>
+        /*  (Tamaño para movil ≥360px) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #3F6212;
+            background-color: #fff;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        a {
+            color: #3F6212;
+            text-decoration: none;
+        }
+        a:focus, button:focus {
+            outline: 2px solid #3F6212;
+            outline-offset: 2px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        h1, h2 {
+            color: #3F6212; /* Verde Olivo*/
+        }
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #3F6212;
+            color: #3F6212;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 0.875rem;
+        }
+        .btn-primary {
+            background-color: #3F6212;
+            color: white;
+        }
+        .btn:focus, .btn-primary:focus {
+            outline: 2px solid #3F6212;
+            outline-offset: 2px;
+        }
+        .product-card, .info-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .container {
+            max-width: 360px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        header {
+            background-color: #3F6212;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+            color: #fff; 
+        }
+        header .subtitle {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+        nav {
+            background-color: #f8f8f8;
+            padding: 0.5rem 0;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        nav a {
+            margin: 0 0.25rem;
+        }
+        main {
+            padding: 1rem 0;
+        }
+        section {
+            margin-bottom: 2rem;
+        }
+        section h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #3F6212;
+            padding-bottom: 0.25rem;
+        }
+        .description {
+            font-size: 1rem;
+            text-align: justify;
+        }
+        .products {
+            display: grid;
+            gap: 1rem;
+        }
+        .product-card {
+            text-align: center;
+        }
+        .product-card h3 {
+            color: #3F6212;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+        .product-price {
+            font-weight: bold;
+            color: #3F6212;
+            font-size: 1.1rem;
+        }
+        .info-grid {
+            display: grid;
+            gap: 1rem;
+        }
+        .info-item {
+            border-left: 4px solid #3F6212;
+            text-align: center;
+        }
+        .info-item strong {
+            color: #3F6212;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 0 auto 0.5rem auto;
+            display: block;
+        }
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        .payment-icon {
+            width: 24px;
+            height: 24px;
+            background: #3F6212;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.75rem;
+        }
+        .whatsapp-link {
+            margin-top: 0.5rem;
+        }
+        .image-rep {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            margin: 1rem 0;
+            max-height: 300px;
+        }
+        footer {
+            background-color: #3F6212;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+        /* Media Query para Tabletas */
+        @media (min-width: 600px) {
+            .container {
+                max-width: 600px;
+                padding: 0 2rem;
+            }
+            header h1 {
+                font-size: 1.75rem;
+            }
+            .products {
+                grid-template-columns: 1fr 1fr;
+            }
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .product-card img {
+                height: 180px;
+            }
+            .image-rep {
+                max-height: 350px;
+            }
+            .info-icon {
+                width: 60px;
+                height: 60px;
+            }
+            .products {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .product-card {
+                flex: 1 1 45%;
+            }
+        }
+        /* Media Query para Escritorios */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+                padding: 0 4rem;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            .products {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            main {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+            .full-width {
+                grid-column: 1 / -1;
+            }
+            .product-card img {
+                height: 200px;
+            }
+            .image-rep {
+                max-height: 400px;
+            }
+            .info-icon {
+                width: 70px;
+                height: 70px;
+            }
+            .product-card {
+                flex: 1 1 25%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="Imagen2.png" alt="Fachada del Colmado El Buen Vecino en Guachupita, mostrando estanterías con productos de alimentos básicos." class="image-rep">
+            <h1>Colmado El Buen Vecino</h1>
+            <p class="subtitle">Más que un colmado, tu vecino de confianza</p>
+        </header>
+        
+        <nav>
+            <a href="#inicio" class="btn btn-primary">Inicio</a>
+            <a href="#productos" class="btn btn-primary">Productos</a>
+            <a href="#contacto" class="btn btn-primary">Contacto</a>
+        </nav>
+        
+        <main>
+            <section id="inicio" class="full-width">
+                <h2>Descripción</h2>
+                <p class="description">Colmado El Buen Vecino es el lugar de confianza en tu comunidad, donde siempre encuentras productos frescos, artículos de primera necesidad y bebidas frías al mejor precio. Con un trato cercano y amable, cada visita se convierte en una experiencia cómoda y familiar.</p>
+            </section>
+
+            <section id="productos" class="full-width">
+                <h2>Productos</h2>
+                <div class="products">
+                    <div class="product-card">
+                        <img src="Arroz.jpeg" alt="Saco de arroz blanco de alta calidad">
+                        <h3>Arroz</h3>
+                        <p class="product-price">RD$50 / libra</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="Frijoles.jpeg" alt="Frijoles rojos envasados">
+                        <h3>Frijoles</h3>
+                        <p class="product-price">RD$40 / libra</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="Leche.jpeg" alt="Cartón de leche en polvo">
+                        <h3>Leche</h3>
+                        <p class="product-price">RD$120 / Cartón</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="Pan.jpeg" alt="Pan de agua fresco">
+                        <h3>Pan de agua</h3>
+                        <p class="product-price">RD$10 / Unidad</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="Aceite.jpeg" alt="Botella de aceite de cocina">
+                        <h3>Aceite</h3>
+                        <p class="product-price">RD$80 / litro</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="Aperitivos.jpeg" alt="Variedad de snacks en empaques coloridos">
+                        <h3>Snacks variados</h3>
+                        <p class="product-price">RD$20 - 50</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="contacto" class="full-width">
+                <h2>Información de Contacto</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <img src="Horario.png" alt="Horario Laborable" class="info-icon">
+                        <strong>Horario</strong>
+                        <p>Diario de 8:00 a 22:00</p>
+                    </div>
+                    <div class="info-item">
+                        <img src="Método de Pago.png" alt="Método de Pago" class="info-icon">
+                        <strong>Métodos de Pago</strong>
+                        <div class="payment-methods">
+                            <span class="payment-icon">E</span>
+                        </div>
+                        <p>Efectivo</p>
+                    </div>
+                    <div class="info-item">
+                        <img src="Telefono.png" alt="Medio de Contacto" class="info-icon">
+                        <strong>Contacto</strong>
+                        <p>Teléfono/WhatsApp: <a href="https://wa.me/18095550128" class="whatsapp-link btn btn-primary" target="_blank">+1 809-555-0128</a></p>
+                    </div>
+                    <div class="info-item">
+                        <img src="Ubicación.png" alt="Ubicación" class="info-icon">
+                        <strong>Ubicación</strong>
+                        <p>C. Cristóbal Colón 10, Santo Domingo Este.</p>
+                        <a href="https://maps.app.goo.gl/8hGZanBnyrjhTZDQ6" class="btn" target="_blank">Ver en Google Maps</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Miembro de <a href="https://ac-sjm.org" target="_blank">Asociación de Comerciantes de San Juan de la Maguana (AC-SJM)</a></p>
+            <p>&copy; 2025 San Juan Digital</p>
+        </footer>
+    </div>
+</body>
+</html>
